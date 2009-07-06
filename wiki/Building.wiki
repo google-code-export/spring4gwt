@@ -1,5 +1,4 @@
-Building spring4gwt requires Subversion 1.5+, Java 5+, Ant 1.7.1+, GWT 1.6.4+. An 
-environment variable for GWT_HOME must also be defined and reference
+Building spring4gwt from source requires Subversion 1.5+, Java 5+, Ant 1.7.1+, GWT 1.6.4+. An environment variable for GWT_HOME must also be defined and reference
 a valid GWT install location.
 
 To build spring4gwt and/or the example projects from source, first check out the project from svn:
