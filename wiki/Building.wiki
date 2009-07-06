@@ -8,7 +8,7 @@ svn checkout http://spring4gwt.googlecode.com/svn/trunk/ spring4gwt
 
 Next define GWT_HOME, e.g. export GWT_HOME="C:\gwt-windows-1.6.4".
 
-To build the spring4gwt library and all examples run "ant" in the project directory. The gwt4spring library jar will be produced in build/dist. Example projects are contained in examples/ and will produce runnable wars the build/dist directory of each.
+To build the spring4gwt library and all examples run "ant" in the project directory. The gwt4spring library jar will be produced in build/dist. Example projects are contained in examples/ and will produce runnable wars the build/dist directory of each. The examples have been tested on Tomcat 6 and Jetty 6 but are very simple and should work in any container.
 
 To build only the spring4gwt library without examples run "ant core".
 
