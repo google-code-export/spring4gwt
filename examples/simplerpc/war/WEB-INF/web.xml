@@ -24,7 +24,6 @@
 		<servlet-name>springGwtRemoteServiceServlet</servlet-name>
 		<servlet-class>org.spring4gwt.server.SpringGwtRemoteServiceServlet</servlet-class>
 	</servlet>
-
 	<servlet-mapping>
 		<servlet-name>springGwtRemoteServiceServlet</servlet-name>
 		<url-pattern>/springGwtServices/*</url-pattern>
