@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project name="spring4gwt" default="core" basedir=".">
+
+	<property file="build.properties" />
+
+	<path id="main.class.path">
+		<pathelement path="${java.class.path}/" />
+		<fileset dir="${lib}">
+			<include name="**.jar" />
+		</fileset>
+	</path>
+
+	<target name="clean">
+		<echo message="Cleaning project..." />
+		<delete quiet="true" dir="${build}" />
+	</target>
+
+	<target name="java">
+		<echo message="Compiling java..." />
+		<mkdir dir="${classes}" />
+		<javac srcdir="${src}" destdir="${classes}" includes="**" debug="on" debuglevel="lines,vars,source" source="1.5" target="1.5">
+			<classpath refid="main.class.path" />
+		</javac>
+	</target>
+
+	<target name="jar" depends="java">
+		<echo message="Building jar..." />
+		<mkdir dir="${dist}" />
+		<jar destfile="${dist}/${jar}">
+			<fileset dir="${classes}">
+				<include name="**" />
+			</fileset>
+		</jar>
+	</target>
+
+	<target name="core" depends="clean,jar" />
+
+	<target name="examples">
+		<ant antfile="examples/simplerpc/build.xml" target="all" inheritall="false" />
+	</target>
+
+	<target name="all" depends="core,examples" />
+
+</project>
