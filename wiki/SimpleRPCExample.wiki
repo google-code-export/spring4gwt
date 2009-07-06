@@ -1,6 +1,4 @@
 #labels Phase-Implementation,Featured
-#How to use GWT for simple RPC calls to Spring services without client-side dependency injection.
-
 While much of Spring4gwt's power lies in dependency injection, it may be also useful to simply use the provided servlet to expose Spring services to your client while still looking up those services directly using GWT.create(). This is a good first step for those new to GWT RPC and may be sufficient in itself for projects with relatively few services or when another client-side framework like Google Gin is being used to manage dependencies. The following steps show how to accomplish this for a simple greeting service. Full source code and a working war for for this example is contained in the examples/simplerpc project.
 
 <ol>
