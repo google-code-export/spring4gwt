@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<project name="spring4gwt" default="core" basedir=".">
+<project name="spring4gwt" default="all" basedir=".">
 
 	<property file="build.properties" />
 
