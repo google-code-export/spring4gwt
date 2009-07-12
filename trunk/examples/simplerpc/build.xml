@@ -54,7 +54,7 @@
 			<arg value="-war" />
 			<arg value="${module}" />
 			<arg value="-localWorkers" />
-			<arg value="2" />
+			<arg value="4" />
 			<arg value="-style" />
 			<arg value="OBFUSCATED" />
 			<arg value="${name}" />
