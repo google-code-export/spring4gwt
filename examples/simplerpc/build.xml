@@ -50,11 +50,11 @@
 			<classpath refid="gwt.class.path" />
 			<jvmarg value="-Xms256m" />
 			<jvmarg value="-Xmx512m" />
-			<jvmarg value="-Xss64m" />
+			<jvmarg value="-Xss1m" />
 			<arg value="-war" />
 			<arg value="${module}" />
 			<arg value="-localWorkers" />
-			<arg value="4" />
+			<arg value="2" />
 			<arg value="-style" />
 			<arg value="OBFUSCATED" />
 			<arg value="${name}" />
