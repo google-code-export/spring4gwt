@@ -20,9 +20,18 @@
 		<pathelement path="${java.class.path}/" />
 		<pathelement path="${gwt.home}/gwt-user.jar" />
 		<fileset dir="${lib}">
-			<include name="**.jar" />
+			<include name="*.jar" />
 		</fileset>
 	</path>
+
+	<path id="test.class.path">
+		<pathelement path="${main.class.path}/" />
+		<fileset dir="${testlib}">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<taskdef classpathref="test.class.path" resource="tasks.properties" loaderref="jetty.loader" />
 
 	<path id="gwt.class.path">
 		<path refid="main.class.path" />
@@ -79,5 +88,11 @@
 	</target>
 
 	<target name="all" depends="clean,war" />
+
+	<target name="jetty">
+		<jetty tempDirectory="build/jetty-temp">
+			<webApp name="${context}" warfile="${dist}/${war}" contextpath="/${context}" />
+		</jetty>
+	</target>
 
 </project>
