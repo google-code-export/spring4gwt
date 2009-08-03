@@ -13,7 +13,7 @@
 		<pathelement path="${java.class.path}/" />
 		<pathelement path="${gwt.home}/gwt-user.jar" />
 		<fileset dir="${lib}">
-			<include name="**.jar" />
+			<include name="*.jar" />
 		</fileset>
 	</path>
 
