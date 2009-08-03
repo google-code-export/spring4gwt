@@ -10,6 +10,8 @@ Next define GWT_HOME, e.g. export GWT_HOME="C:\gwt-windows-1.6.4".
 
 To build the spring4gwt library and all examples run "ant" in the project directory. The gwt4spring library jar will be produced in build/dist. Example projects are contained in examples/ and will produce runnable wars the build/dist directory of each. The examples have been tested on Tomcat 6 and Jetty 6 but are very simple and should work in any container.
 
+If desired, after building the project you may run all of the example applications locally on jetty from ant by running "ant jetty". The examples will be deployed at http://localhost:8080/.
+
 To build only the spring4gwt library without examples run "ant core".
 
 In addition to spring4gwt.jar, the project's lib/ directory contains third-party libraries used by spring4gwt and its example projects. Spring4gwt is intentionally very lightweight so that it will work in as many environments as possible. At a minimum, you'll need log4j, 
