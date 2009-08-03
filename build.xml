@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <project name="spring4gwt" default="all" basedir=".">
 
+	<property environment="env" />
+	<condition property="gwt.home" value="${env.GWT_HOME}">
+		<isset property="env.GWT_HOME" />
+	</condition>
 	<property file="build.properties" />
+
+	<echo>Using GWT_HOME: ${gwt.home}</echo>
 
 	<path id="main.class.path">
 		<pathelement path="${java.class.path}/" />
+		<pathelement path="${gwt.home}/gwt-user.jar" />
 		<fileset dir="${lib}">
 			<include name="**.jar" />
 		</fileset>
@@ -37,6 +44,7 @@
 
 	<target name="examples">
 		<ant antfile="examples/simplerpc/build.xml" target="all" inheritall="false" />
+		<ant antfile="examples/injection/build.xml" target="all" inheritall="false" />
 	</target>
 
 	<target name="all" depends="core,examples" />

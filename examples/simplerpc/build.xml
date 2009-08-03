@@ -18,6 +18,7 @@
 
 	<path id="main.class.path">
 		<pathelement path="${java.class.path}/" />
+		<pathelement path="${gwt.home}/gwt-user.jar" />
 		<fileset dir="${lib}">
 			<include name="**.jar" />
 		</fileset>
@@ -27,7 +28,7 @@
 		<path refid="main.class.path" />
 		<pathelement path="${gwt.home}/gwt-dev-${os}.jar" />
 		<pathelement path="${src}" />
-		<pathelement path="${module}"/>
+		<pathelement path="${module}" />
 	</path>
 
 	<target name="clean">
@@ -73,7 +74,7 @@
 			<classes dir="${classes}" />
 			<classes dir="${resources}" />
 			<lib dir="${lib}" />
-			<lib dir="${spring4gwt}"/>
+			<lib dir="${spring4gwt}" />
 		</war>
 	</target>
 
