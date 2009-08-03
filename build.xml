@@ -17,6 +17,15 @@
 		</fileset>
 	</path>
 
+	<path id="test.class.path">
+		<pathelement path="${main.class.path}/" />
+		<fileset dir="${testlib}">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<taskdef classpathref="test.class.path" resource="tasks.properties" loaderref="jetty.loader" />
+
 	<target name="clean">
 		<echo message="Cleaning project..." />
 		<delete quiet="true" dir="${build}" />
@@ -48,5 +57,12 @@
 	</target>
 
 	<target name="all" depends="core,examples" />
+
+	<target name="jetty">
+		<jetty tempDirectory="build/jetty-temp">
+			<webApp name="simplerpc" warfile="examples/simplerpc/build/dist/simplerpc.war" contextpath="/simplerpc" />
+			<webApp name="injection" warfile="examples/injection/build/dist/injection.war" contextpath="/injection" />
+		</jetty>
+	</target>
 
 </project>
