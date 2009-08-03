@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project name="injection" default="all" basedir=".">
+
+	<property environment="env" />
+	<condition property="gwt.home" value="${env.GWT_HOME}">
+		<isset property="env.GWT_HOME" />
+	</condition>
+	<property file="build.properties" />
+
+	<echo>Using GWT_HOME: ${gwt.home}</echo>
+
+	<condition property="os" value="windows">
+		<os family="windows" />
+	</condition>
+	<condition property="os" value="linux">
+		<os family="unix" />
+	</condition>
+
+	<path id="main.class.path">
+		<pathelement path="${java.class.path}/" />
+		<pathelement path="${gwt.home}/gwt-user.jar" />
+		<fileset dir="${lib}">
+			<include name="**.jar" />
+		</fileset>
+	</path>
+
+	<path id="gwt.class.path">
+		<path refid="main.class.path" />
+		<pathelement path="${gwt.home}/gwt-dev-${os}.jar" />
+		<pathelement path="${src}" />
+		<pathelement path="${module}" />
+	</path>
+
+	<target name="clean">
+		<echo message="Cleaning project..." />
+		<delete quiet="true" dir="${build}" />
+	</target>
+
+	<target name="java">
+		<echo message="Compiling java..." />
+		<mkdir dir="${classes}" />
+		<javac srcdir="${src}" destdir="${classes}" includes="**" debug="on" debuglevel="lines,vars,source" source="1.5" target="1.5">
+			<classpath refid="main.class.path" />
+		</javac>
+	</target>
+
+	<target name="gwt" depends="java">
+		<echo message="Compiling GWT..." />
+		<mkdir dir="${module}" />
+		<java classname="com.google.gwt.dev.Compiler" fork="true" failonerror="true">
+			<classpath refid="gwt.class.path" />
+			<jvmarg value="-Xms256m" />
+			<jvmarg value="-Xmx512m" />
+			<jvmarg value="-Xss1m" />
+			<arg value="-war" />
+			<arg value="${module}" />
+			<arg value="-localWorkers" />
+			<arg value="2" />
+			<arg value="-style" />
+			<arg value="OBFUSCATED" />
+			<arg value="${name}" />
+		</java>
+	</target>
+
+	<target name="war" depends="gwt">
+		<echo message="Building war..." />
+		<mkdir dir="${dist}" />
+		<war destfile="${dist}/${war}" webxml="${webxml}">
+			<fileset dir="${module}/${name}" />
+			<fileset dir="${web}">
+				<include name="*.html" />
+				<include name="${webinf}/*.xml" />
+			</fileset>
+			<classes dir="${classes}" />
+			<classes dir="${resources}" />
+			<lib dir="${lib}" />
+			<lib dir="${spring4gwt}" />
+		</war>
+	</target>
+
+	<target name="all" depends="clean,war" />
+
+</project>
